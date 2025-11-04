@@ -15,8 +15,7 @@ COPY src ./src
 
 # Executar o build do projeto com Maven
 # -B (batch mode) evita logs interativos
-# -Dmaven.test.skip=true pula compilação e execução dos testes
-RUN mvn -B clean package -Dmaven.test.skip=true
+RUN mvn -B clean package
 
 # STAGE 2 — RUNTIME
 FROM eclipse-temurin:21-jdk-jammy
