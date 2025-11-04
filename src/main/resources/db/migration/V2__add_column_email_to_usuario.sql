@@ -1,13 +1,7 @@
--- V2
+IF NOT EXISTS (
+  SELECT 1 FROM sys.columns
+  WHERE Name = N'EMAIL' AND Object_ID = Object_ID(N'CH_TB_USER')
+)
 BEGIN
-   EXECUTE IMMEDIATE 'ALTER TABLE CH_TB_USER ADD EMAIL VARCHAR2(255)';
-EXCEPTION
-   WHEN OTHERS THEN
-      IF SQLCODE = -1430 THEN
-         NULL; -- coluna já existe, ignora
-      ELSE
-         RAISE;
-      END IF;
+  ALTER TABLE CH_TB_USER ADD EMAIL VARCHAR(255);
 END;
-/
-
