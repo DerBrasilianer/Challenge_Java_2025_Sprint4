@@ -32,7 +32,7 @@ O projeto utiliza:
 
 ## 🛠️ Tecnologias
 
-* **Java 21**
+* **Java 17**
 * **Spring Boot 3**
 * **Spring MVC + Thymeleaf**
 * **Spring Data JPA**
@@ -146,3 +146,36 @@ O projeto utiliza:
 
 * Cadastro de Moto
 ![patios-form](src/main/resources/static/prints/motos_form.png)
+
+* Telemetria IoT
+![telemetri-list](src/main/resources/static/prints/telemetria_list.png)
+
+--- 
+
+## 🔗 Integração Multidisciplinar
+
+### 🗄️ **Banco de Dados Oracle**
+- **Persistência de Dados**: Utilização do Oracle Database para armazenamento das entidades (motos, pátios, usuários, telemetria)
+- **Testes Automatizados**: Implementação de testes unitários com JUnit para validar a camada de serviço e repositório
+
+### 📱 **Mobile Development & Backend Java**
+- **API REST**: Desenvolvimento de endpoints RESTful para integração com aplicativos móveis
+- **Deploy no Render**: Hospedagem da aplicação backend para acesso remoto via dispositivos móveis
+
+### 🔄 **DevOps & Pipeline**
+- **CI/CD**: Pipeline de deploy automatizado no Render com integração contínua do GitHub
+- **Versionamento**: Controle de versão com Git e GitHub para colaboração em equipe
+
+### 📡 **Internet das Coisas (IoT)**
+- **Telemetria em Tempo Real**: Sistema de coleta de dados de sensores (distância, estado, localização)
+- **Dashboard IoT**: Interface web para monitoramento dos dados de telemetria
+- **API de Integração**: Endpoints específicos para recebimento de dados de dispositivos IoT
+
+---
+
+## 🛠️ Variáveis de Ambiente
+```properties
+SPRING_DATASOURCE_URL=<jdbc:oracle:thin:@host:port:database>
+SPRING_DATASOURCE_USERNAME=<seu-usuario>
+SPRING_DATASOURCE_PASSWORD=<sua-senha>
+SPRING_DATASOURCE_DRIVER_CLASS_NAME=<driver>
