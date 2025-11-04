@@ -19,9 +19,14 @@
         </div>
 
         <!-- Conteúdo para usuários logados -->
-        <div sec:authorize="isAuthenticated()" class="d-grid gap-3 d-md-block">
-            <a th:href="@{/motos}" class="home-button btn btn-lg">Gerenciar Motos</a>
-            <a th:href="@{/patios}" class="home-button-outline btn btn-lg">Gerenciar Pátios</a>
+        <div sec:authorize="isAuthenticated()" class="text-center">
+            <div class="d-flex gap-3 justify-content-center mb-3">
+                <a th:href="@{/motos}" class="home-button-outline btn btn-lg">Gerenciar Motos</a>
+                <a th:href="@{/patios}" class="home-button-outline btn btn-lg">Gerenciar Pátios</a>
+            </div>
+            <div class="d-grid gap-3 d-md-block">
+                <a th:href="@{/telemetria/lista}" class="home-button-outline btn btn-lg">Conferir Telemetria</a>
+            </div>
         </div>
     </div>
 </main>
