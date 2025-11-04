@@ -13,7 +13,7 @@
 	</parent>
 
 	<groupId>com.fiap</groupId>
-	<artifactId>Challenge_Java_2025_Sprint3</artifactId>
+	<artifactId>Challenge_Java_2025_Sprint4</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gestao-frota</name>
 
