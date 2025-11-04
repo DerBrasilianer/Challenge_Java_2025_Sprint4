@@ -1,0 +1,522 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background-color: #00B131;
+    color: #ffffff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* HEADER COMPACTO - CORRIGIDO */
+.navbar {
+    background-color: #000000;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+    position: relative;
+    z-index: 1000;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.navbar-logo a {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar-logo a:hover {
+    color: #00B131;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-menu li {
+    margin: 0;
+}
+
+.navbar-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.navbar-menu a:hover {
+    color: #00B131;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.logout-btn:hover {
+    color: #d32f2f;
+    background-color: rgba(211, 47, 47, 0.1);
+}
+
+/* FOOTER COMPACTO - CORRIGIDO */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.8rem 1rem;
+    margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.8rem;
+}
+
+.copyright {
+    margin: 0;
+    color: #cccccc;
+}
+
+.group-info {
+    text-align: right;
+    position: relative;
+    cursor: pointer;
+}
+
+.group-name {
+    color: #00B131;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.group-name:hover {
+    background-color: rgba(0, 183, 49, 0.1);
+}
+
+/* Tooltip para mostrar os integrantes */
+.group-info:hover::after {
+    content: "Vinicius Prates Altafini - RM 559183\A Lucas Resende Lima - RM 556564\A Enzo Prado Soddano - RM 557937";
+    white-space: pre;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    min-width: 220px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+/* ESTILOS PARA AS PÁGINAS MOBILE-LIKE - CORRIGIDOS */
+.mobile-style-container {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00B131;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.mobile-style-card {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    border: 1px solid #1b5e20;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+}
+
+.mobile-logo {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1rem auto;
+    opacity: 0.8;
+    background-color: #00B131;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.mobile-input {
+    border: 1px solid #1b5e20;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    min-height: 44px;
+    line-height: 1.5;
+    max-width: 100%;
+}
+
+.mobile-primary-button {
+    background-color: #00B131;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+}
+
+.mobile-primary-button:hover {
+    background-color: #009a2a;
+}
+
+.mobile-link {
+    color: #00B131;
+    text-decoration: underline;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.home-hero {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00B131;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.home-logo {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 1.5rem auto;
+    opacity: 0.8;
+    background-color: #00B131;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.home-button {
+    background-color: #1b5e20;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-weight: 600;
+    margin: 0 10px 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.home-button:hover {
+    background-color: #164d17;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.home-button-outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-weight: 600;
+    margin: 0 10px 10px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.home-button-outline:hover {
+    background-color: #ffffff;
+    color: #00B131;
+    text-decoration: none;
+}
+
+.error-alert {
+    background-color: #d32f2f;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.info-alert {
+    background-color: #2196f3;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos para o select (dropdown) */
+select.mobile-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b5e20' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+select.mobile-input:focus {
+    outline: none;
+    border-color: #00B131;
+    box-shadow: 0 0 0 2px rgba(0, 183, 49, 0.2);
+}
+
+select.mobile-input option {
+    padding: 8px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.form-label {
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+/* Estilos para o container de senha com botão de toggle - CORRIGIDO */
+.password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+.password-field {
+    padding-right: 45px !important;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 0 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    color: #1b5e20;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    line-height: 1;
+    margin-top: -2px;
+    box-sizing: border-box;
+}
+
+.password-toggle:hover {
+    background-color: rgba(0, 183, 49, 0.1);
+}
+
+.password-toggle:focus {
+    outline: none;
+    background-color: rgba(0, 183, 49, 0.2);
+}
+
+/* RESPONSIVIDADE MELHORADA */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        min-height: auto;
+    }
+
+    .navbar-menu {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .home-button, .home-button-outline {
+        display: block;
+        margin: 10px auto;
+        width: 200px;
+        max-width: 90%;
+    }
+
+    .group-info {
+        text-align: center;
+    }
+
+    .group-info:hover::after {
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 200px;
+        max-width: 90vw;
+    }
+
+    .mobile-style-card {
+        padding: 1.5rem;
+        margin: 10px;
+    }
+
+    .mobile-logo, .home-logo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .mobile-style-container {
+        padding: 15px;
+        min-height: calc(100vh - 100px);
+    }
+}
+
+/* CORREÇÃO EXTRA PARA ZOOM E TELAS MUITO PEQUENAS */
+@media (max-width: 480px) {
+    .mobile-style-card {
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 5px;
+    }
+
+    .mobile-logo, .home-logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    h2.fw-bold {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-style-container {
+        padding: 10px;
+    }
+    
+    .home-hero {
+        padding: 15px;
+    }
+    
+    .home-button, .home-button-outline {
+        width: 180px;
+        padding: 10px 20px;
+    }
+}
+
+/* CORREÇÕES PARA ALTOS ZOOMS */
+@media (min-width: 1200px) {
+    .mobile-style-card {
+        max-width: 560px;
+    }
+}
+
+/* GARANTIR QUE FORMULÁRIOS NÃO QUEBREM COM ZOOM */
+form {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* CORREÇÃO PARA O FLEX-GROW NAS PÁGINAS */
+.flex-grow-1 {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}

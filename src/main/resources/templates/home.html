@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="pt-BR">
+<head th:replace="layout :: mainHead('Home')"></head>
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="layout :: mainHeader"></div>
+
+<main class="home-hero flex-grow-1">
+    <div>
+        <div class="home-logo">
+            <img th:src="@{/images/mottu-logo.png}" alt="Logo Mottu" style="max-width: 100%; height: auto;">
+        </div>
+        <h1 class="fw-bold mb-3">Bem-vindo ao Gestão Mottu</h1>
+        <p class="lead mb-4">Gerencie suas motos e filiais de maneira rápida e prática!</p>
+
+        <!-- Conteúdo para usuários NÃO logados -->
+        <div sec:authorize="!isAuthenticated()" class="d-grid gap-3 d-md-block">
+            <a th:href="@{/login}" class="home-button btn btn-lg">Fazer Login</a>
+            <a th:href="@{/register}" class="home-button-outline btn btn-lg">Criar Conta</a>
+        </div>
+
+        <!-- Conteúdo para usuários logados -->
+        <div sec:authorize="isAuthenticated()" class="d-grid gap-3 d-md-block">
+            <a th:href="@{/motos}" class="home-button btn btn-lg">Gerenciar Motos</a>
+            <a th:href="@{/patios}" class="home-button-outline btn btn-lg">Gerenciar Pátios</a>
+        </div>
+    </div>
+</main>
+
+<div th:replace="layout :: mainFooter"></div>
+</body>
+</html>
