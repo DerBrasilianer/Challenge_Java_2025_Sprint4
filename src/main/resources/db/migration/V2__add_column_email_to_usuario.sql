@@ -1,0 +1,13 @@
+-- V2
+BEGIN
+   EXECUTE IMMEDIATE 'ALTER TABLE CH_TB_USER ADD EMAIL VARCHAR2(255)';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE = -1430 THEN
+         NULL; -- coluna já existe, ignora
+      ELSE
+         RAISE;
+      END IF;
+END;
+/
+
