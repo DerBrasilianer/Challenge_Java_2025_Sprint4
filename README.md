@@ -24,7 +24,7 @@ O projeto utiliza:
 * Interface web com **Spring MVC + Thymeleaf**
 * CRUD completo de Motos, Pátios e Usuários
 * Segurança com **Spring Security**
-* Persistência com **Spring Data JPA** e **Oracle Database**
+* Persistência com **Spring Data JPA** e **Azure SQL Server**
 * Migrations automatizadas com **Flyway**
 * Estilização com Bootstrap + CSS customizado
 
@@ -39,7 +39,7 @@ O projeto utiliza:
 * **Spring Security**
 * **Flyway**
 * **Maven**
-* **Oracle Database**
+* **Azure SQL Server**
 * **Bootstrap + CSS customizado**
 * **Lombok**
 
@@ -86,6 +86,10 @@ O projeto utiliza:
     * Criar, listar, editar e deletar pátios
     * Um pátio pode ter várias motos
 
+* **Conferência de Telemetria:**
+
+    * Conferir dados de telemetria enviads pelo IoT
+
 * **CRUD de Usuários:**
 
     * Registro de novos usuários
@@ -101,6 +105,7 @@ O projeto utiliza:
 
     * Endpoints para Motos (`/api/motos`)
     * Endpoints para Pátios (`/api/patios`)
+    * Endpoints para Telemetria (`/telemetria`)
     * Endpoints para Usuários via registro/login
 
 * **Segurança:**
@@ -111,7 +116,7 @@ O projeto utiliza:
 
 * **Banco de dados:**
 
-    * Oracle DB com migrations Flyway
+    * Azure SQL Server para ambientes de produção e testes
 
 ---
 
@@ -155,7 +160,7 @@ O projeto utiliza:
 ## 🔗 Integração Multidisciplinar
 
 ### 🗄️ **Banco de Dados Oracle**
-- **Persistência de Dados**: Utilização do Oracle Database para armazenamento das entidades (motos, pátios, usuários, telemetria)
+- **Persistência de Dados**: Utilização do SQL Server da Azure para armazenamento das entidades (motos, pátios, usuários, telemetria)
 - **Testes Automatizados**: Implementação de testes unitários com JUnit para validar a camada de serviço e repositório
 
 ### 📱 **Mobile Development & Backend Java**
@@ -165,6 +170,7 @@ O projeto utiliza:
 ### 🔄 **DevOps & Pipeline**
 - **CI/CD**: Pipeline de deploy automatizado no Render com integração contínua do GitHub
 - **Versionamento**: Controle de versão com Git e GitHub para colaboração em equipe
+- **Azure SQL Server**: Utilização do SQL Server da Azure para persistência
 
 ### 📡 **Internet das Coisas (IoT)**
 - **Telemetria em Tempo Real**: Sistema de coleta de dados de sensores (distância, estado, localização)
@@ -175,7 +181,7 @@ O projeto utiliza:
 
 ## 🛠️ Variáveis de Ambiente
 ```properties
-SPRING_DATASOURCE_URL=<jdbc:oracle:thin:@host:port:database>
-SPRING_DATASOURCE_USERNAME=<seu-usuario>
-SPRING_DATASOURCE_PASSWORD=<sua-senha>
-SPRING_DATASOURCE_DRIVER_CLASS_NAME=<driver>
+SPRING_DATASOURCE_URL=<string-de-conexão>
+SPRING_DATASOURCE_USERNAME=<user-do-seu-sqlserver>
+SPRING_DATASOURCE_PASSWORD=<senha-do-seu-sqlserver>
+SPRING_DATASOURCE_DRIVER_CLASS_NAME=<driver-do-seu-sqlserver>
