@@ -29,6 +29,7 @@
             <!-- VISÍVEL SOMENTE PARA USUÁRIOS LOGADOS -->
             <li sec:authorize="isAuthenticated()"><a th:href="@{/motos}">Motos</a></li>
             <li sec:authorize="isAuthenticated()"><a th:href="@{/patios}">Pátios</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/telemetria/lista}">Telemetria</a></li>
             <li sec:authorize="isAuthenticated()">
                 <form th:action="@{/logout}" method="post" style="display:inline;">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>

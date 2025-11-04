@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="pt-BR">
+<head th:replace="~{layout :: mainHead('Telemetria')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div th:replace="~{layout :: mainHeader}"></div>
+
+<main class="container mt-4">
+    <div class="text-center mb-4">
+        <img th:src="@{/images/mottu-logo.png}" alt="Logo Mottu" style="max-width: 200px; height: auto;">
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Telemetria - Últimas Leituras</h2>
+        <form th:action="@{/telemetria/lista}" method="get" class="d-flex gap-2">
+            <input type="text" class="form-control" name="dispositivo" placeholder="Buscar por dispositivo"/>
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Dispositivo</th>
+            <th>Timestamp</th>
+            <th>Distância (cm)</th>
+            <th>Estado</th>
+            <th>Busca</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="t : ${telemetrias}" th:classappend="${t.distancia} < 20 ? 'table-danger'">
+            <td th:text="${t.id}">1</td>
+            <td th:text="${t.dispositivo}">MotoA</td>
+            <td th:text="${t.timestamp}">2025-11-02 15:00</td>
+            <td th:text="${t.distancia}">45.7</td>
+            <td th:text="${t.estado}">moto_presente</td>
+            <td th:text="${t.busca}">false</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<div th:replace="~{layout :: mainFooter}"></div>
+
+</body>
+</html>
