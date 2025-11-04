@@ -1,4 +1,6 @@
+# ================================
 # STAGE 1 — BUILD
+# ================================
 FROM eclipse-temurin:21-jdk AS build
 
 # Instalar o Maven
@@ -14,10 +16,12 @@ COPY pom.xml .
 COPY src ./src
 
 # Executar o build do projeto com Maven
-# -B (batch mode) evita logs interativos
+# (Agora os testes são executados normalmente — não há skip)
 RUN mvn -B clean package
 
+# ================================
 # STAGE 2 — RUNTIME
+# ================================
 FROM eclipse-temurin:21-jdk-jammy
 
 # Definir o diretório onde o app será executado dentro do container
@@ -25,6 +29,9 @@ WORKDIR /app
 
 # Expôr a porta padrão do Spring Boot (Render usa essa porta)
 EXPOSE 8080
+
+# Definir variável de ambiente do perfil ativo (produção)
+ENV SPRING_PROFILES_ACTIVE=prod
 
 # Copiar o arquivo .jar gerado no estágio anterior
 COPY --from=build /app/target/*.jar app.jar
