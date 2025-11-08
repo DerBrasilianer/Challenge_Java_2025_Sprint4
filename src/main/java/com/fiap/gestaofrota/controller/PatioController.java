@@ -4,7 +4,6 @@ import com.fiap.gestaofrota.dto.PatioDTO;
 import com.fiap.gestaofrota.entity.PatioEntity;
 import com.fiap.gestaofrota.mapper.PatioMapper;
 import com.fiap.gestaofrota.service.PatioService;
-import com.fiap.gestaofrota.service.PushService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +14,9 @@ import java.util.List;
 @RequestMapping("/api/patios")
 public class PatioController {
     private final PatioService patioService;
-    private final PushService pushService;
 
-    public PatioController(PatioService patioService, PushService pushService) {
+    public PatioController(PatioService patioService) {
         this.patioService = patioService;
-        this.pushService = pushService;
     }
 
     @GetMapping
@@ -37,7 +34,6 @@ public class PatioController {
     public ResponseEntity<PatioDTO> criar(@RequestBody @Valid PatioDTO patioDto) {
         PatioEntity entity = PatioMapper.toPatioEntity(patioDto);
         PatioEntity salvo = patioService.criar(entity);
-        pushService.sendSimpleNotificationToAll("Pátio cadastrado", "Pátio " + salvo.getNome() + " cadastrado");
         return ResponseEntity.ok(PatioMapper.toPatioDTO(salvo));
     }
 
@@ -45,7 +41,6 @@ public class PatioController {
     public ResponseEntity<PatioDTO> atualizar(@PathVariable Long id, @RequestBody @Valid PatioDTO patioDto) {
         PatioEntity entity = PatioMapper.toPatioEntity(patioDto);
         PatioEntity atualizado = patioService.atualizar(id, entity);
-        pushService.sendSimpleNotificationToAll("Pátio atualizado", "Pátio " + atualizado.getNome() + " atualizado");
         return ResponseEntity.ok(PatioMapper.toPatioDTO(atualizado));
     }
 

@@ -6,7 +6,6 @@ import com.fiap.gestaofrota.entity.PatioEntity;
 import com.fiap.gestaofrota.mapper.MotoMapper;
 import com.fiap.gestaofrota.service.MotoService;
 import com.fiap.gestaofrota.service.PatioService;
-import com.fiap.gestaofrota.service.PushService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +19,10 @@ import java.util.Optional;
 public class MotoController {
     private final MotoService motoService;
     private final PatioService patioService;
-    private final PushService pushService;
 
-    public MotoController(MotoService motoService, PatioService patioService, PushService pushService) {
+    public MotoController(MotoService motoService, PatioService patioService) {
         this.motoService = motoService;
         this.patioService = patioService;
-        this.pushService = pushService;
     }
 
     @GetMapping
@@ -46,7 +43,6 @@ public class MotoController {
         MotoEntity entity = MotoMapper.toMotoEntity(moto, patio.get());
         MotoEntity salvo = motoService.criar(entity);
         String patioNome = patio.get().getNome() == null ? "" : patio.get().getNome();
-        pushService.sendSimpleNotificationToAll("Moto cadastrada", "Moto " + (salvo.getPlaca() == null ? "" : salvo.getPlaca()) + " no pátio " + patioNome);
         return ResponseEntity.ok(MotoMapper.toMotoDTO(salvo));
     }
 
@@ -57,7 +53,6 @@ public class MotoController {
         MotoEntity entityAtualizada = MotoMapper.toMotoEntity(motoDto, patio.get());
         MotoEntity entityFinal = motoService.atualizar(id, entityAtualizada);
         String patioNome = patio.get().getNome() == null ? "" : patio.get().getNome();
-        pushService.sendSimpleNotificationToAll("Moto atualizada", "Moto " + (entityFinal.getPlaca() == null ? "" : entityFinal.getPlaca()) + " no pátio " + patioNome);
         return ResponseEntity.ok(MotoMapper.toMotoDTO(entityFinal));
     }
 
